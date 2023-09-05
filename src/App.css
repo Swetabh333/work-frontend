@@ -1,0 +1,191 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.my-3{
+    text-align: center;
+    width:100%;
+    padding:5px;
+}
+.docker{
+    height: 100vh;
+    position: sticky;
+    right:0;
+    background-color: #F8F9FA;
+    width:0;
+}
+
+.udocker{
+    height: 100vh;
+    position: sticky;
+    left:0;
+    background-color: #F8F9FA;
+    width:0;
+}
+
+.table{
+    width:90%;
+    margin: auto;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-brand{
+    font-weight:600;
+}
+
+.x-holder{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.ux-holder{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cross{
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.cross:hover{
+    cursor: pointer;
+}
+
+.ucross{
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.ucross:hover{
+    cursor: pointer;
+}
+
+
+.col-10,.col-12{
+    padding:0;
+    display: flex;
+    justify-content: center;
+    overflow-x: scroll;
+}
+
+.login{
+    height:800px;
+    width: 500px;
+    border-radius: 10px;
+    border: solid 0.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.login input{
+    width:100%;
+}
+
+.login button{
+    margin-top:5%;
+}
+
+.sideform{
+    padding:10px;
+    display: none;
+}
+.usideform{
+    padding:10px;
+    display: none;
+}
+
+.page{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+th{
+    cursor: default;
+}
+
+td:hover{
+    cursor: text;
+}
+
+.addbtn{
+    width:9%;
+    display: block;
+}
+
+.submitbtn{
+    width:10%;
+}
+
+.delbtn{
+    width:9%;
+}
+
+.xx input{
+    width:10%;
+}
+
+.xx,.xy{
+
+    display: none;
+}
+
+.findel{
+    width:9%;
+}
+
+.deliconholder:hover{
+    background-color: white;
+}
+
+.delicon:hover{
+    cursor: pointer;
+    color:#0D6EFD;
+}
+
+.mt{
+    margin-top:8%;
+}
+
+form h2{
+    text-align: center;
+    margin-bottom: 200px;
+}
+
+.red-text{
+    color: red;
+}
+
+.red-text2,.red-text3,.red-text4,.red-text5{
+    color: red;
+}
+
+.create-new{
+    color:blue;
+    margin-top:5%;
+    display: block;
+}
+
+.create-new:hover{
+    text-decoration: underline;
+    cursor:pointer; 
+}
+
+.user-created{
+    font-weight:500;
+    font-size:medium;
+    margin-top:10px;
+    color:#0D6EFD;
+}
