@@ -284,6 +284,8 @@ const Table = (props)=>{
     }
 
     const downloadCSV =()=>{
+        if(document.querySelector('.red-text7')){
+            document.querySelector('.csvbtn').parentElement.removeChild(document.querySelector('.red-text7'))};
         console.log(document.querySelector('#csvinput').value==='')
         if(document.querySelector('.red-text6')){
             document.querySelector('.csvbtn').parentElement.removeChild(document.querySelector('.red-text6'))};
@@ -310,6 +312,16 @@ const Table = (props)=>{
                 return res.json()
             }).then((data)=>{
                 console.log(data)
+                if(data.downloadUrl){
+                    window.open(data.downloadUrl,'blank')
+                }else{
+                    if(!document.querySelector('.red-text7')){
+                        let para = document.createElement('p');
+                        para.innerHTML = "Data doesn't exist for this date"
+                        para.classList.add('red-text7');
+                        document.querySelector('.csvbtn').parentElement.appendChild(para);
+                    }
+                }
             })
 
         }
