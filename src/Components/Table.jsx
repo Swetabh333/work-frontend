@@ -18,7 +18,7 @@ const Table = (props)=>{
     useEffect(()=>{
         console.log(user)
         let count = 1;
-        fetch('http://localhost:8080/fetchdata',{
+        fetch('https://canarabackend.onrender.com/fetchdata',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -190,7 +190,7 @@ const Table = (props)=>{
             }
         }
 
-        fetch('http://localhost:8080/commitdata',{
+        fetch('https://canarabackend.onrender.com/commitdata',{
             method : "POST",
             headers : {
                 'Content-Type' : 'application/json'
@@ -299,7 +299,7 @@ const Table = (props)=>{
         }
         }else{
             let date = document.querySelector('#csvinput').value;
-            fetch('http://localhost:8080/csvdata',{
+            fetch('https://canarabackend.onrender.com/csvdata',{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json'

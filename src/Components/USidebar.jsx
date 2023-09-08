@@ -66,7 +66,7 @@ const USidebar = () => {
       }
      
 
-      fetch('http://localhost:8080/update',{
+      fetch('https://canarabackend.onrender.com/update',{
         method:'POST',
         headers:{
           'Content-Type':'application/json'

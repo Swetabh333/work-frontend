@@ -116,7 +116,7 @@ const Login = (props) => {
     }
 
     const adminVerif = async () =>{
-      let response = await fetch('http://localhost:8080/adminVerif',{
+      let response = await fetch('https://canarabackend.onrender.com/adminVerif',{
         method:'POST',
         headers:{
           'Content-Type': 'application/json'
@@ -253,7 +253,7 @@ const Login = (props) => {
           roname: document.querySelector('#new-uname').value,
           password : pass 
         }
-        fetch('http://localhost:8080/new',{
+        fetch('https://canarabackend.onrender.com/new',{
           method:"POST",
           headers:{
             'Content-Type':'application/json'
@@ -294,7 +294,7 @@ const Login = (props) => {
             username : document.querySelector("#username").value,
             password : document.querySelector('#password').value
         }
-        fetch("http://localhost:8080/",{
+        fetch("https://canarabackend.onrender.com/",{
             method : "POST",
             headers : {
                 'Content-Type' : 'application/json'

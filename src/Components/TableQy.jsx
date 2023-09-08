@@ -13,7 +13,7 @@ const TableQy = (props) => {
     },[])
     useEffect(()=>{
         let count = 1;
-        fetch('http://localhost:8080/fetchdata',{
+        fetch('https://canarabackend.onrender.com/fetchdata',{
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
@@ -179,7 +179,7 @@ const TableQy = (props) => {
             }
         }
 
-        fetch('http://localhost:8080/commitdata',{
+        fetch('https://canarabackend.onrender.com/commitdata',{
             method : "POST",
             headers : {
                 'Content-Type' : 'application/json'
@@ -217,7 +217,7 @@ const TableQy = (props) => {
         }
         }else{
             let quarterv= document.querySelector('#csvinput').value;
-            fetch('http://localhost:8080/csvdata',{
+            fetch('https://canarabackend.onrender.com/csvdata',{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json'

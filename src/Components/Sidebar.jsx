@@ -9,7 +9,7 @@ const [user,setUser] = useState(false);
 
 
 useEffect(()=>{
-  fetch('http://localhost:8080/checkuser')
+  fetch('https://canarabackend.onrender.com/checkuser')
   .then((res) => res.json())
   .then((data) => {
     sessionStorage.setItem('user',data.user)
@@ -33,7 +33,7 @@ const del = (e)=>{
   if(e.target.parentElement.parentElement.parentElement){
     let RowTodel = e.target.parentElement.parentElement.children;
     console.log(RowTodel[1].innerHTML);
-    fetch('http://localhost:8080/delete',{
+    fetch('https://canarabackend.onrender.com/delete',{
       method:'POST',
       headers:{
         'Content-Type':'application/json'
@@ -114,7 +114,7 @@ useEffect(()=>{
       PoS : parseInt(document.querySelector("#inputPos").value),
       UPI: parseInt(document.querySelector("#inputUPI").value)
     } ;
-        fetch('http://localhost:8080/storedata',{
+        fetch('https://canarabackend.onrender.com/storedata',{
           method:'POST',
           headers:{
             'Content-Type':'application/json'

@@ -35,7 +35,7 @@ function App() {
   const [login,setLogin] = useState(true);
 
   useEffect(()=>{
-    fetch('http://localhost:8080/checkuser')
+    fetch('https://canarabackend.onrender.com/checkuser')
     .then((res)=>{
       return res.json()
     })
