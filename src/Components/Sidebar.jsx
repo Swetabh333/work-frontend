@@ -183,6 +183,7 @@ useEffect(()=>{
                   <td>${document.querySelector("#inputPos").value}</td>
                   <td contenteditable="true"></td>
                   <td>${document.querySelector("#inputUPI").value}</td>
+                  <td contenteditable='true'></td>
                   <td><i class="fa-solid delicon fa-trash"></i></td>`;}
                   props.changesnoq(props.snoq+1)
                 }else if(document.URL.includes('yearly')){
@@ -220,6 +221,7 @@ useEffect(()=>{
                   <td>${document.querySelector("#inputPos").value}</td>
                   <td contenteditable="true"></td>
                   <td>${document.querySelector("#inputUPI").value}</td>
+                  <td contenteditable='true'></td>
                   <td><i class="fa-solid delicon fa-trash"></i></td>`;}
                   props.changeSNoY(props.snoy+1);
                 }else{

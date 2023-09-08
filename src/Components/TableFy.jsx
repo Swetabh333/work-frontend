@@ -29,7 +29,7 @@ const TableFy = (props) => {
             arr.forEach((element)=>{
                 let TR = document.createElement('tr');
                 if(document.URL.includes('daily')){
-                  if(user){  
+                  if(sessionStorage.getItem('user')==="ADMIN"){  
                     TR.innerHTML =
                 `
                 <td class="d-sno" colspan=2>${count++}</td>
@@ -69,7 +69,7 @@ const TableFy = (props) => {
                 }
                 props.changesnod(count)
             }else if(document.URL.includes('quarterly')){
-                if(user){  
+                if(sessionStorage.getItem('user')==="ADMIN"){  
                     TR.innerHTML =
                 `
                 <td class="d-sno" colspan=2>${count++}</td>
@@ -109,7 +109,7 @@ const TableFy = (props) => {
                 }
                 props.changesnoq(count)
             }else{
-                if(user){  
+                if(sessionStorage.getItem('user')==="ADMIN"){  
                     TR.innerHTML =
                 `
                 <td class="d-sno" colspan=2>${count++}</td>
@@ -155,7 +155,6 @@ const TableFy = (props) => {
     },[])
 
     const Commit = () =>{
-        
         let data = {};
         let len = document.querySelector('tbody').children.length;
         for (let i = 0 ; i < len ; i++){
@@ -255,6 +254,81 @@ const TableFy = (props) => {
         }
     }
 
+    const downloadCSV =()=>{
+        if(document.querySelector('.red-text7')){
+            document.querySelector('.csvbtn').parentElement.removeChild(document.querySelector('.red-text7'))};
+        console.log(document.querySelector('#csvinput').value==='')
+        if(document.querySelector('.red-text6')){
+            document.querySelector('.csvbtn').parentElement.removeChild(document.querySelector('.red-text6'))};
+
+        if(document.querySelector('#csvinput').value===''){
+            if(!document.querySelector('.red-text6')){
+            let para = document.createElement('p');
+            para.innerHTML = 'Please select a value'
+            para.classList.add('red-text6');
+            document.querySelector('.csvbtn').parentElement.appendChild(para);
+        }
+        }else{
+            let yearv = document.querySelector('#csvinput').value;
+            fetch('http://localhost:8080/csvdata',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    year:yearv,
+                    table:document.URL.split('/')[3]
+                })
+            }).then((res)=>{
+                return res.json()
+            }).then((data)=>{
+                console.log(data)
+                if(data.downloadUrl){
+                    window.open(data.downloadUrl,'blank')
+                }else{
+                    if(!document.querySelector('.red-text7')){
+                        let para = document.createElement('p');
+                        para.innerHTML = "Data doesn't exist for this date"
+                        para.classList.add('red-text7');
+                        document.querySelector('.csvbtn').parentElement.appendChild(para);
+                    }
+                }
+            })
+
+        }
+    }
+
+    const CSVgenerator =()=>{
+        if(!document.querySelector('#csvinput')){
+            let csvlab = document.createElement('label');
+            if(document.URL.includes('daily')){
+                csvlab.innerHTML = "Select the date:"
+            }else if (document.URL.includes('quarterly')){
+                csvlab.innerHTML = "Enter  the quarter:"
+            }else{
+                csvlab.innerHTML = 'Enter the year'
+            }
+            csvlab.setAttribute('for','csvinput')
+            csvlab.classList.add('csvlab')
+            let csvinput = document.createElement('input');
+            csvinput.classList.add('csvinput')
+            csvinput.setAttribute('id','csvinput')
+            if(document.URL.includes('daily')){
+    
+                csvinput.setAttribute('type','number')
+            }
+            let button = document.createElement('button')
+            button.innerHTML = 'Download CSV'
+            button.classList.add('btn','btn-success','downloadcsv')
+            button.addEventListener('click',downloadCSV);
+            document.querySelector('.csvbtn').parentElement.appendChild(csvlab)
+            document.querySelector('.csvbtn').parentElement.appendChild(csvinput)
+            document.querySelector('.csvbtn').parentElement.appendChild(button)
+        }
+
+    }
+
+
 
     const AddRow=()=>{
         UcloseButton();
@@ -332,6 +406,9 @@ const TableFy = (props) => {
         </div> 
         <div className='row my-2'>
        {user && <button className='btn btn-primary submitbtn' onClick={Update}>Update Data</button>}
+        </div> 
+        <div className='row my-2'>
+       {user && <button className='btn btn-primary csvbtn' onClick={CSVgenerator}>Get CSV</button>}
         </div> 
 
         </div>

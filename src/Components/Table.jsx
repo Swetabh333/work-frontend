@@ -33,7 +33,7 @@ const Table = (props)=>{
             arr.forEach((element)=>{
                 let TR = document.createElement('tr');
                 if(document.URL.includes('daily')){
-                  if(user){  
+                  if(sessionStorage.getItem('user')==="ADMIN"){  
                     TR.innerHTML =
                 `
                 <td class="d-sno" colspan=2>${count++}</td>
@@ -73,7 +73,7 @@ const Table = (props)=>{
                 }
                 props.changesnod(count)
             }else if(document.URL.includes('quarterly')){
-                if(user){  
+                if(sessionStorage.getItem('user')==="ADMIN"){  
                     TR.innerHTML =
                 `
                 <td class="d-sno" colspan=2>${count++}</td>
@@ -113,7 +113,7 @@ const Table = (props)=>{
                 }
                 props.changesnoq(count)
             }else{
-                if(user){  
+                if(sessionStorage.getItem('user')==="ADMIN"){  
                     TR.innerHTML =
                 `
                 <td class="d-sno" colspan=2>${count++}</td>
