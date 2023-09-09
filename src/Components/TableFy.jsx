@@ -13,6 +13,54 @@ const TableFy = (props) => {
        
     },[])
 
+    const del = (e)=>{
+        console.log('Button clicked')
+        if(document.URL.includes('quarterly')){
+          props.changesnoq(props.snoq-1);
+        }else if(document.URL.includes('yearly')){    
+          props.changeSNoY(props.snoy-1); 
+        }else{
+          props.changesnod(props.snod-1);
+        }
+        if(e.target.parentElement.parentElement.parentElement){
+          let RowTodel = e.target.parentElement.parentElement.children;
+          console.log(RowTodel[1].innerHTML);
+          fetch('https://canarabackend.onrender.com/delete',{
+            method:'POST',
+            headers:{
+              'Content-Type':'application/json'
+            },
+            body:JSON.stringify({RO:RowTodel[1].innerHTML,table:document.URL.split('/')[3]})
+          })
+          e.target.parentElement.parentElement.parentElement.removeChild(e.target.parentElement.parentElement);
+          if(document.URL.includes('quarterly')){
+            let arr2=document.querySelectorAll('.q-sno')
+            for(let j=1;j<arr2.length+1;j++){
+              if(arr2[j-1]){
+                arr2[j-1].innerHTML=j;
+              }
+            } 
+          }
+          }else if(document.URL.includes('yearly')){    
+      
+            let arr2=document.querySelectorAll('.y-sno')
+            for(let j=1;j<arr2.length+1;j++){
+              if(arr2[j-1]){
+                arr2[j-1].innerHTML=j;
+              }
+            }      
+          }else{
+      
+            let arr2=document.querySelectorAll('.d-sno')
+      
+            for(let j=1;j<arr2.length+1;j++){
+              if(arr2[j-1]){
+                arr2[j-1].innerHTML=j;
+              }
+            }            
+        }
+      }
+
     useEffect(()=>{
         let count = 1;
         fetch('https://canarabackend.onrender.com/fetchdata',{
@@ -151,6 +199,11 @@ const TableFy = (props) => {
             }
             document.querySelector('tbody').appendChild(TR);
             })
+            let arr2=document.querySelectorAll(".delicon");
+            for(let i=0;i<arr2.length;i++){
+                    if(arr2[i]){
+            arr2[i].addEventListener('click',del);
+          }}
         })
     },[])
 

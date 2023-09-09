@@ -23,6 +23,7 @@ useEffect(()=>{
 },[])
 
 const del = (e)=>{
+  console.log('Button clicked')
   if(document.URL.includes('quarterly')){
     props.changesnoq(props.snoq-1);
   }else if(document.URL.includes('yearly')){    
@@ -149,7 +150,7 @@ useEffect(()=>{
                 }
                 let TR = document.createElement('tr');
                 if(document.URL.includes('quarterly')){
-                  if(user){
+                  if(sessionStorage.getItem('user')==="ADMIN"){
                     TR.innerHTML=
                   `
                   <td className="q-sno" colspan=2>${props.snoq}</td>
@@ -188,7 +189,7 @@ useEffect(()=>{
                   props.changesnoq(props.snoq+1)
                 }else if(document.URL.includes('yearly')){
                   
-                  if(user){
+                  if(sessionStorage.getItem('user')==="ADMIN"){
                     TR.innerHTML=
                   `
                   <td class="y-sno" colspan=2>${props.snoy}</td>
@@ -226,7 +227,7 @@ useEffect(()=>{
                   props.changeSNoY(props.snoy+1);
                 }else{
                   
-                  if(user){
+                  if(sessionStorage.getItem('user')==="ADMIN"){
                     TR.innerHTML=
                   `
                   <td class="d-sno" colspan=2>${props.snod}</td>
@@ -271,10 +272,15 @@ useEffect(()=>{
                 document.querySelector("#inputPos").value="";
                 document.querySelector("#inputUPI").value="";
                 document.querySelector("#inputRO").value="";
-          }}
+                let arr=document.querySelectorAll(".delicon");
+                for(let i=0;i<arr.length;i++){
+                        if(arr[i]){
+                arr[i].addEventListener('click',del);
+              }}
           
-        })
-                
+                }    }
+      })
+            
                 
         }
         
