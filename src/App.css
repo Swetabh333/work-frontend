@@ -3,6 +3,12 @@ body{
     padding: 0;
     overflow: hidden;
 }
+
+img{
+    height:30px;
+    width:40px;
+}
+
 .my-3{
     text-align: center;
     width:100%;
